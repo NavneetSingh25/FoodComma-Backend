@@ -3,7 +3,7 @@ const serverConfig=require('./ServerConfig')
 
 async function connectDB(){
     try {
-        await mongoose.connect(serverConfig.DB_URL)
+        await mongoose.connect(serverConfig.DB_URL);
         console.log('DB succesfully connected');
         
     } catch (error) {
