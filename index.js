@@ -33,7 +33,7 @@ app.post('/photo',uploader.single('incomingfile'),async (req,res)=>{
     return res.json({message:'ok'});
 })
 
-app.get('/ping',isLoggedIn,(req,res)=>{
+app.get('/ping',(req,res)=>{
     console.log(req.body);
     console.log(req.cookies);
     return res.json({message:"pong"})
