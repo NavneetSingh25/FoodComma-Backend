@@ -19,16 +19,19 @@ async function login(req,res) {
         const response=await loginUser(loginpayload)
         console.log(response);
         
-        res.cookie("authToken",response,{
+        res.cookie("authToken",response.token,{
             httpOnly:true,
             secure:false,
             maxAge:7*24*60*60*1000
         })
         
         return res.json({
-        message:'successfully created',
+        message:'successfully logged In',
         success:true,
-        data:{},
+        data:{
+            userRole:response.userRole,
+            userData:response.userData
+        },
         error:{}
     })
     } catch (error) {

@@ -1,4 +1,5 @@
 const express=require('express')
+const cors=require('cors')
 const serverConfig=require('./config/ServerConfig')
 const connectDB=require('./config/dbConfig')
 const bodyParser=require('body-parser')
@@ -14,6 +15,11 @@ const productRouter = require('./routes/productRoute')
 const orderRouter = require('./routes/orderRoutes')
 
 const app=express()
+
+app.use(cors({
+    origin:'http://localhost:5173',
+    credentials:true
+}))
 app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use(bodyParser.urlencoded());

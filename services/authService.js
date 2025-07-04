@@ -30,7 +30,10 @@ async function loginUser(authDetails){
         expiresIn:EXPIRES_IN
     });
 
-    return token;
+    return {token,userRole,userData:{
+        email:user.email,
+        firstName:user.firstName
+    }};
 }
 
 module.exports=loginUser
