@@ -3,11 +3,7 @@ const loginUser=require('../services/authService')
 
 
 async function logout(req,res){
-    res.cookie("authToken","",{
-            httpOnly:true,
-            secure:COOKIE_SECURE,
-            maxAge:7*24*60*60*1000
-        })
+    res.cookie("authToken","");
     return res.status(200).json({
         success:true,
         message:'logged out successfully',
