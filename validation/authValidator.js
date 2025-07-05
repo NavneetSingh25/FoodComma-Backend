@@ -26,13 +26,11 @@ async function isLoggedIn(req,res,next){
         next();
     } catch (error) {
         if(token.name==="TokenExpiredError"){
-            res.cookie("authToken","",{
-            httpOnly:true,
-            secure:COOKIE_SECURE,
-            sameSite:'None',
-            maxAge:7*24*60*60*1000,
-            domain: 'pizzafront-end.vercel.app'
-        })
+        res.clearCookie("authToken", {
+        httpOnly: true,
+        secure: COOKIE_SECURE,
+        sameSite: "strict",
+        });
             return res.status(200).json({
             success:true,
             message:'logged out successfully',

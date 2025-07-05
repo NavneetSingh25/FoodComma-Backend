@@ -3,13 +3,11 @@ const loginUser=require('../services/authService')
 
 
 async function logout(req,res){
-    res.cookie("authToken","",{
-            httpOnly:true,
-            secure:COOKIE_SECURE,
-            sameSite:'None',
-            maxAge:7*24*60*60*1000,
-            domain: 'pizzafront-end.vercel.app'
-        })
+    res.clearCookie("authToken", {
+    httpOnly: true,
+    secure: COOKIE_SECURE,
+    sameSite: "strict",
+    });
     return res.status(200).json({
         success:true,
         message:'logged out successfully',
@@ -30,8 +28,7 @@ async function login(req,res) {
             httpOnly:true,
             secure:COOKIE_SECURE,
             sameSite:'None',
-            maxAge:7*24*60*60*1000,
-            domain: 'pizzafront-end.vercel.app'
+            maxAge:7*24*60*60*1000
         })
         
         return res.json({
@@ -48,7 +45,6 @@ async function login(req,res) {
         error:error,
         success:false,
         data:{},
-        error:error
     })
     }
 }
