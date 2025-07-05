@@ -3,7 +3,13 @@ const loginUser=require('../services/authService')
 
 
 async function logout(req,res){
-    res.cookie("authToken","");
+    res.cookie("authToken","",{
+            httpOnly:true,
+            secure:COOKIE_SECURE,
+            sameSite:'None',
+            maxAge:7*24*60*60*1000,
+            domain:'https://foodcomma-frontend.netlify.app'
+        })
     return res.status(200).json({
         success:true,
         message:'logged out successfully',
@@ -23,7 +29,9 @@ async function login(req,res) {
         res.cookie("authToken",response.token,{
             httpOnly:true,
             secure:COOKIE_SECURE,
-            maxAge:7*24*60*60*1000
+            sameSite:'None',
+            maxAge:7*24*60*60*1000,
+            domain:'https://foodcomma-frontend.netlify.app'
         })
         
         return res.json({
