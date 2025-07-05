@@ -17,7 +17,7 @@ const orderRouter = require('./routes/orderRoutes')
 const app=express()
 
 app.use(cors({
-    origin:'https://pizzafront-end.vercel.app',
+    origin:'https://crustique.vercel.app',
     credentials:true
 }))
 app.use(bodyParser.json());
