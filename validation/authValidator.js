@@ -65,7 +65,7 @@ async function isAdmin(req,res,next){
     }
     
 }
-6
+
 module.exports={
     isLoggedIn,
     isAdmin
