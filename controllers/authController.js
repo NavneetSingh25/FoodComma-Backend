@@ -1,3 +1,4 @@
+const { COOKIE_SECURE } = require('../config/ServerConfig');
 const loginUser=require('../services/authService')
 
 
@@ -21,7 +22,7 @@ async function login(req,res) {
         
         res.cookie("authToken",response.token,{
             httpOnly:true,
-            secure:false,
+            secure:COOKIE_SECURE,
             maxAge:7*24*60*60*1000
         })
         

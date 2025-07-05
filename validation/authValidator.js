@@ -1,4 +1,4 @@
-const { SECRET_KEY } = require("../config/ServerConfig")
+const { SECRET_KEY, COOKIE_SECURE } = require("../config/ServerConfig")
 const jwt=require('jsonwebtoken')
 
 async function isLoggedIn(req,res,next){
@@ -28,7 +28,7 @@ async function isLoggedIn(req,res,next){
         if(token.name==="TokenExpiredError"){
             res.cookie("authToken","",{
             httpOnly:true,
-            secure:false,
+            secure:COOKIE_SECURE,
             maxAge:7*24*60*60*1000
         })
             return res.status(200).json({
