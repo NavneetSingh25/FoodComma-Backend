@@ -18,7 +18,7 @@ const app=express()
 
 app.use(cors({
     origin:'https://foodcomma-frontend.netlify.app',
-    credentials:true
+    credentials:"include"
 }))
 app.use(bodyParser.json());
 app.use(bodyParser.text());
